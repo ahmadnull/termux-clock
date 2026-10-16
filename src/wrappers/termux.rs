@@ -10,7 +10,7 @@ pub fn set_timer_command(timer: Timer) -> Command {
 
     match timer.message {
         Some(m) => {
-            &args[1].push_str(
+            let _ = &args[1].push_str(
                 format!(
                     r#"& termux-notification --title "Termux Timer ({}s)" --content "{}" &"#,
                     timer.length.unwrap(),
@@ -20,12 +20,12 @@ pub fn set_timer_command(timer: Timer) -> Command {
             );
         }
         None => {
-            &args[1].push_str(format!(r#"& termux-notification --title "Termux Timer ({}s)" --content "Timer finished" &"#, timer.length.unwrap()).as_str());
+            let _ = &args[1].push_str(format!(r#"& termux-notification --title "Termux Timer ({}s)" --content "Timer finished" &"#, timer.length.unwrap()).as_str());
         }
     };
 
     if timer.vibrate {
-        &args[1].push_str("& termux-vibrate &");
+        let _ = &args[1].push_str("& termux-vibrate &");
     };
 
     let mut command = Command::new("sh");

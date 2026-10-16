@@ -1,5 +1,3 @@
-use std::process::Stdio;
-
 use crate::wrappers::{am, termux};
 
 #[derive(Clone, Debug, PartialEq)]
